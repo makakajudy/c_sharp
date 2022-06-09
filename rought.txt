@@ -1,0 +1,134 @@
+/*  REQUIRED OUTPUT
+                                Category list Fruits
+                                Apple  $1
+                                Dragonfruit  $1
+
+                                Category list Vegetables
+                                Spinach  $2
+                                Peas  $1
+
+             */
+
+
+            /* REQUIRED OUTPUT USING GROUPBY
+             list.Select(specifies the type of values that will be produced when the query is executed)
+            select(mylist =>mylist.variablename ==specifiy the variable to be selected.filterered
+            var select_func= Product_list.Select(Product_list => Product_list.Caterory=="Fruits");
+                      
+            var caterory_list=Product_list.GroupBy(x => x.Caterory);//def new list and group by categories
+            foreach(var group in caterory_list) {
+                Console.WriteLine($"Category list {group.Key}   ");
+                foreach (var item in group) 
+                {
+                    if (item.Stocked) {//only log items are in stock
+                        Console.WriteLine($"{item.Name }  {item.Price }  ");                    
+                    }                   
+                }
+                Console.WriteLine(" ");
+
+            }*/
+
+
+            //REQUIRED OUTPUT USING DICTIONARY IN C#
+
+            //Dictionary<string, Int16> DICTNAME = new Dictionary<string, Int16>();
+            Dictionary<string, int> AuthorList = new Dictionary<string, int>();
+
+            AuthorList.Add("Mahesh Chand", 35);
+            AuthorList.Add("Mike Gold", 25);
+            AuthorList.Add("Praveen Kumar", 29);
+            AuthorList.Add("Raj Beniwal", 21);
+            AuthorList.Add("Dinesh Beniwal", 84);
+
+            //changin value
+            //AuthorList["Mahesh Chand"] = 20;
+            //Int16 age = Convert.ToInt16(AuthorList["Mahesh Chand"]);
+            //Console.WriteLine($"set new age {age}");
+
+            //length of the dict
+            //Console.WriteLine("Count: {0}", AuthorList.Count);
+
+            foreach (KeyValuePair<string, int> author in AuthorList)//KeyValuePair<string, int> sed they type->dict
+            {
+               // Console.WriteLine("key-name: {0}, value-Age: {1}", author.Key, author.Value);
+            }
+            Dictionary<string, int>.KeyCollection keys = AuthorList.Keys;
+            foreach (string key in keys)
+            {
+                //Console.WriteLine("Key: {0}", key);
+
+            }
+            Dictionary<string, int>.ValueCollection values = AuthorList.Values;
+            foreach (int val in values)
+            {
+                //Console.WriteLine("Value: {0}", val);
+            }
+
+            //TOLIST           
+            //def a list->List<int> list = new List<int>();
+            //equate it to the dict to to be converted and call the Tolist()
+            //list->List<datatype> newlistname = my_dic.Tolist();
+
+            List<KeyValuePair<string, int>> newlist = AuthorList.ToList();
+
+            //looping
+            foreach (KeyValuePair<string, int> item in newlist)
+            {
+                Console.WriteLine($"{item.Key}   {item.Value}");               
+
+            }
+
+
+
+            Dictionary<string, List<int>> CategoryList = new Dictionary<string, List<int>>();
+
+            //CategoryList.Add("Test1", new List<int>() { 12 });
+           // CategoryList["Test1"].Add(34);
+
+            foreach (var item in CategoryList)
+            {
+               // Console.WriteLine("Category" + item.Value);
+                /* foreach( var values323 in item.Value)
+                 {
+                   var serString = JsonConvert.SerializeObject(values323);
+                     Console.WriteLine(serString);
+                 }*/
+            }
+            Dictionary<string, List<string>> Product_dict = new Dictionary<string, List<string>>();
+            
+
+                Product_dict.Add("c",new List<string>(){"apple","orange"});
+
+            foreach (var items in Product_dict) 
+            {
+                //Console.WriteLine(items.Key);
+                foreach (var item in items.Value)
+                {
+                   // Console.WriteLine(item);
+               
+                }
+            
+            }
+            Console.WriteLine(" ");
+
+            var dict_fromList=new Dictionary<string, List<string>>();
+            // (Fruits, {apple, pear}
+            // (vegetables, {}
+            var list_to_dic= Product_list.GroupBy(first_dtype => first_dtype.Caterory)          
+                .ToDictionary(sec_dtype => sec_dtype.Key, sec_dtype => sec_dtype.Select(y => y.Name));
+
+            foreach (var c in list_to_dic)
+            {
+                Console.WriteLine($"category:{c.Key}");
+                foreach (var item in c.Value)
+                {
+                    Console.WriteLine(item); ;
+
+                }
+                Console.WriteLine(" ");
+                //Console.WriteLine($"{item.Key} {item.Value}");
+
+            }
+
+            //Console.WriteLine(list_to_dic);
+
