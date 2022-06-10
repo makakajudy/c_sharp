@@ -62,7 +62,7 @@ namespace Reactdata {
                // Console.WriteLine($"{item.Id}");
                //Console.WriteLine($" {item.Name} {item.Subject}");
 
-
+                //////
             }
 
             //Dictionary<string,List<MyClass>> mydict = new Dictionary<string,List<MyClass>>();
